@@ -1,3 +1,23 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&family=Momo+Trust+Display&display=swap");
+
+@theme {
+    --color-black: #000000;
+    --color-accent: #ffc815;
+    --color-base-1: #00011c;
+    --color-base-2: #000233;
+    --color-highlight: #ffffff;
+    --color-grey: #585858;
+    --font-display: "Fira Code", monospace;
+}
+
+h1,
+h2,
+h3,
+p {
+    font-family: var(--font-display);
+}
