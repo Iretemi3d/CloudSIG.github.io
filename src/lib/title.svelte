@@ -16,8 +16,10 @@
             />
         </div>
 
-        <div class="w-full text-center -translate-y-20">
-            <h1 class="text-8xl text-highlight font-whatever">Cloud SIG</h1>
+        <div class="w-full text-center pb-10">
+            <h1 class="text-5xl sm:text-8xl text-highlight font-whatever">
+                Cloud SIG
+            </h1>
         </div>
     </div>
 </div>
@@ -35,6 +37,6 @@
         height: 100%;
         object-fit: cover;
         object-position: bottom;
-        clip-path: inset(15% 0 0 0);
+        clip-path: inset(15% 0 15% 0);
     }
 </style>

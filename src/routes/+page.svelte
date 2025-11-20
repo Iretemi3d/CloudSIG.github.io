@@ -60,8 +60,8 @@
 
 <Title />
 
-<div>
-    <h1 class="text-4xl text-highlight space">What is Cloud?</h1>
+<div class="max-w-[85%] mx-auto padding">
+    <h1 class="text-4xl text-highlight space font-titles">What is Cloud?</h1>
     <p class="text-2xl text-highlight space">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi deserunt
         eum officia suscipit totam velit ea illum autem eligendi, ducimus
@@ -85,5 +85,12 @@
 
     .space {
         padding: 50px;
+    }
+    .padding {
+        padding-top: 50px;
+    }
+    @import url("https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&family=Momo+Trust+Display&family=Stack+Sans+Text:wght@200..700&display=swap");
+    .font-titles {
+        font-family: "Momo Trust Display", sans-serif;
     }
 </style>
