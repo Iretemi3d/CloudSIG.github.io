@@ -62,7 +62,7 @@
 <Title />
 
 <div class="max-w-[85%] mx-auto padding">
-    <h1 class="text-4xl text-highlight space font-titles">What is Cloud?</h1>
+    <h1 class="text-4xl text-highlight space font-titles animate-fadeIn">What is Cloud?</h1>
     <p class="text-2xl text-highlight space" style="padding-top: 0px;">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi deserunt
         eum officia suscipit totam velit ea illum autem eligendi, ducimus
@@ -105,4 +105,6 @@
     .font-titles {
         font-family: "Momo Trust Display", sans-serif;
     }
+
+
 </style>

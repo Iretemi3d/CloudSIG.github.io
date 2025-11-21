@@ -1,11 +1,13 @@
-<script lang="ts">
+<script lang="ts" context="module">
   export interface EventCard {
     id: number;
     title: string;
     date: string;
     summary: string;
   }
+</script>
 
+<script lang="ts">
   export let events: EventCard[] = [
     { id: 1, title: 'Intro to Cloud', date: 'Jan 12, 2026', summary: 'Kickoff session covering basics of cloud models.' },
     { id: 2, title: 'Serverless Night', date: 'Feb 03, 2026', summary: 'Deep dive into FaaS patterns and cost optimizations.' },
@@ -29,7 +31,6 @@
   
   function handleWheel(e: WheelEvent) {
     if (!scroller) return;
-    // Use vertical wheel to scroll horizontally; support trackpads
     const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
     scroller.scrollBy({ left: delta, behavior: 'auto' });
   }
@@ -62,7 +63,6 @@
   <div
     bind:this={scroller}
     class="scroller {isDragging ? 'dragging' : ''}"
-    tabindex="0"
     on:wheel|preventDefault={handleWheel}
     on:pointerdown={startDrag}
     on:pointermove={onDrag}
@@ -70,7 +70,7 @@
     on:pointerleave={endDrag}
   >
     {#each events as ev}
-      <article class="card" aria-labelledby={`ev-${ev.id}-title`}>
+      <article class="card transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110" aria-labelledby={`ev-${ev.id}-title`}>
         <h3 id={`ev-${ev.id}-title`} class="card-title">{ev.title}</h3>
         <p class="card-date">{ev.date}</p>
         <p class="card-summary">{ev.summary}</p>
@@ -84,7 +84,7 @@
     position: relative;
     width: 100%;
     margin: 0 auto;
-    padding: 0 10px 30px;
+    padding: 0 40px 30px;
   }
   .controls {
     display: flex;
@@ -108,16 +108,16 @@
 
   .scroller {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
-    scrollbar-width: none; /* Firefox */
-    padding: 10px 5px 10px 5px;
+    scrollbar-width: none; 
+    padding: 25px;
     cursor: grab;
     user-select: none;
-    -ms-overflow-style: none; /* IE/Edge legacy */
-    touch-action: pan-y pinch-zoom; /* retain vertical gestures for nested areas */
+    -ms-overflow-style: none; 
+    touch-action: pan-y pinch-zoom;
   }
   .scroller:focus {outline-offset: 2px; }
   .scroller::-webkit-scrollbar { display: none; }
@@ -137,8 +137,9 @@
     color: var(--color-highlight);
     min-height: 50%;
     min-width: 10%;
+
   }
-  .card-title { font-size: 150%; margin: 0; }
+  .card-title { font-size: 150%; margin: 0; font-weight: 500;}
   .card-date { font-size: 80%; opacity: 0.8; margin: 0; color: var(--color-accent);}
   .card-summary { font-size: 120%; margin: 0; }
 
