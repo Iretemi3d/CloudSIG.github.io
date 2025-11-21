@@ -1,6 +1,7 @@
 <script lang="ts">
     import Title from "$lib/title.svelte";
     import { SVG, type Svg } from "@svgdotjs/svg.js";
+    import EventsScroller from "$lib/eventsScroller.svelte";
 
     function add_path(
         draw: Svg,
@@ -62,7 +63,7 @@
 
 <div class="max-w-[85%] mx-auto padding">
     <h1 class="text-4xl text-highlight space font-titles">What is Cloud?</h1>
-    <p class="text-2xl text-highlight space">
+    <p class="text-2xl text-highlight space" style="padding-top: 0px;">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi deserunt
         eum officia suscipit totam velit ea illum autem eligendi, ducimus
         doloremque dolorum qui cupiditate assumenda, perspiciatis sunt
@@ -72,6 +73,16 @@
         autem aspernatur sint.
     </p>
 </div>
+
+
+<div class="max-w-[85%] mx-auto padding">
+    <h1 class="text-4xl text-highlight space font-titles">Events</h1>
+    <EventsScroller />
+</div>
+
+
+
+
 
 <style>
     .filter {
@@ -85,9 +96,10 @@
 
     .space {
         padding: 50px;
+        
     }
     .padding {
-        padding-top: 50px;
+        padding-top: 70px;
     }
     @import url("https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&family=Momo+Trust+Display&family=Stack+Sans+Text:wght@200..700&display=swap");
     .font-titles {
