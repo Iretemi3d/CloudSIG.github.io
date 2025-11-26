@@ -2,6 +2,7 @@
     import Title from "$lib/title.svelte";
     import { SVG, type Svg } from "@svgdotjs/svg.js";
     import EventsScroller from "$lib/eventsScroller.svelte";
+    import WhatIsCloud from "$lib/what-is-cloud.svelte";
 
     function add_path(
         draw: Svg,
@@ -16,7 +17,7 @@
         const path = draw
             .path(line1)
             .fill("none")
-            .stroke({ width: 3, color: "#ffc815" });
+            .stroke({ width: 3, color: "#15e4ffff" });
         const length = path.length();
 
         // @ts-ignore
@@ -61,28 +62,12 @@
 
 <Title />
 
-<div class="max-w-[85%] mx-auto padding">
-    <h1 class="text-4xl text-highlight space font-titles animate-fadeIn">What is Cloud?</h1>
-    <p class="text-2xl text-highlight space" style="padding-top: 0px;">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi deserunt
-        eum officia suscipit totam velit ea illum autem eligendi, ducimus
-        doloremque dolorum qui cupiditate assumenda, perspiciatis sunt
-        aspernatur maxime ad. Lorem ipsum dolor, sit amet consectetur
-        adipisicing elit. Minus nobis delectus atque commodi, iste aspernatur
-        quisquam dicta quod id culpa, fugiat odit nisi adipisci? Libero sunt rem
-        autem aspernatur sint.
-    </p>
-</div>
-
+<WhatIsCloud />
 
 <div class="max-w-[85%] mx-auto padding">
     <h1 class="text-4xl text-highlight space font-titles">Events</h1>
     <EventsScroller />
 </div>
-
-
-
-
 
 <style>
     .filter {
@@ -96,7 +81,6 @@
 
     .space {
         padding: 50px;
-        
     }
     .padding {
         padding-top: 70px;
@@ -105,6 +89,4 @@
     .font-titles {
         font-family: "Momo Trust Display", sans-serif;
     }
-
-
 </style>
