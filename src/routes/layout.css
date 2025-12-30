@@ -35,3 +35,9 @@ h3,
 p {
     font-family: var(--font-display);
 }
+
+ .my-aug {
+        --aug-border-bg: var(--color-accent);
+        --aug-border-all: 2px;
+        --aug-inlay-opacity: 0;
+    }

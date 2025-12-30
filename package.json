@@ -26,6 +26,7 @@
 		"vite": "^7.1.10"
 	},
 	"dependencies": {
-		"@svgdotjs/svg.js": "^3.2.5"
+		"@svgdotjs/svg.js": "^3.2.5",
+		"augmented-ui": "^2.0.0"
 	}
 }
