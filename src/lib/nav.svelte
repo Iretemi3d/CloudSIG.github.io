@@ -1,9 +1,13 @@
+<script>
+    import { base } from '$app/paths';
+</script>
+
 <nav
     class="flex items-center fixed left-0 top-0 bg-base-1/95 w-full px-6 py-3 shadow-md z-40 border-b border-accent/30"
 >
     <div class="flex-1 flex items-center">
         <a
-            href="/"
+            href="{base}/"
             class="text-accent font-semibold text-lg transition-transform hover:scale-125 ease-in-out duration-500"
             >Cloud SIG</a
         >
@@ -12,17 +16,17 @@
     <div class="flex-1 flex justify-end">
         <div class="flex items-center space-x-4">
             <a
-                href="/about"
+                href="{base}/about"
                 class="text-highlight text-sm px-3 py-2 rounded transition-colors hover-line"
                 >About</a
             >
             <a
-                href="/sponsors"
+                href="{base}/sponsors"
                 class="text-highlight text-sm px-3 py-2 rounded transition-colors hover-line"
                 >Sponsors</a
             >
             <a
-                href="/event"
+                href="{base}/event"
                 class="text-highlight text-sm px-3 py-2 rounded transition-colors hover-line"
                 >Events</a
             >
