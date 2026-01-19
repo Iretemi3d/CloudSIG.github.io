@@ -15,30 +15,31 @@
             date: "Jan 12, 2026",
             summary: "Kickoff session covering basics of cloud models.",
         },
+        
         {
             id: 2,
-            title: "Serverless Night",
-            date: "Feb 03, 2026",
-            summary: "Deep dive into FaaS patterns and cost optimizations.",
+            title: "Coming soon",
+            date: ".....",
+            summary: "...........",
         },
-        {
-            id: 3,
-            title: "Kubernetes Workshop",
-            date: "Mar 21, 2026",
-            summary: "Hands-on cluster setup and deployment pipelines.",
-        },
-        {
-            id: 4,
-            title: "Data & AI",
-            date: "Apr 10, 2026",
-            summary: "Cloud data platforms and ML workflow integration.",
-        },
-        {
-            id: 5,
-            title: "Edge Computing",
-            date: "May 05, 2026",
-            summary: "Latency reduction strategies and edge architectures.",
-        },
+        // {
+        //     id: 3,
+        //     title: "Kubernetes Workshop",
+        //     date: "Mar 21, 2026",
+        //     summary: "Hands-on cluster setup and deployment pipelines.",
+        // },
+        // {
+        //     id: 4,
+        //     title: "Data & AI",
+        //     date: "Apr 10, 2026",
+        //     summary: "Cloud data platforms and ML workflow integration.",
+        // },
+        // {
+        //     id: 5,
+        //     title: "Edge Computing",
+        //     date: "May 05, 2026",
+        //     summary: "Latency reduction strategies and edge architectures.",
+        // },
     ];
 
     let scroller: HTMLDivElement | null = null;

@@ -3,6 +3,7 @@
     import WhatIsCloud from "$lib/what-is-cloud.svelte";
     import Event from "$lib/event.svelte";
     import Bg from "$lib/bg.svelte";
+    import Foot from "$lib/foot.svelte";
   
 </script>
 
@@ -29,7 +30,7 @@
             <Event />
         </div>
     </section>
-
+ <Foot/>
     <!-- Decorative bottom gradient -->
     <div
         class="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--color-base-1)] to-transparent pointer-events-none"

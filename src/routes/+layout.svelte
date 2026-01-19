@@ -2,6 +2,8 @@
     import "./layout.css";
     import favicon from "$lib/assets/favicon.png";
     import Nav from "$lib/nav.svelte";
+    import Foot from "$lib/foot.svelte";
+    
 
     let { children } = $props();
 </script>
@@ -16,4 +18,7 @@
 
 <Nav />
 
+
 {@render children()}
+
+

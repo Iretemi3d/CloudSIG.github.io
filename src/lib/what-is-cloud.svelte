@@ -68,21 +68,19 @@
                     <h1 class="title-text font-titles animate-fadeIn">
                         What is Cloud?
                     </h1>
-                    <p class="description-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Sequi deserunt eum officia suscipit totam velit ea illum
-                        autem eligendi, ducimus doloremque dolorum qui
-                        cupiditate assumenda, perspiciatis sunt aspernatur
-                        maxime ad.
+                    <p class="description-text pb-10">
+                        There is no fluffy cloud in the Cloud,
+                        it’s just someone else’s computer. 
+                        You can manage it remotely and use a variety 
+                        of tools to optimize time and cost. 
+                        We’ll show you how the cloud is essential 
+                        for companies like Netflix and AI platforms, 
+                        and run short workshops where you can practice 
+                        cloud networking yourself.
                     </p>
-                    <p class="description-text mt-6">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Minus nobis delectus atque commodi, iste
-                        aspernatur quisquam dicta quod id culpa, fugiat odit
-                        nisi adipisci? Libero sunt rem autem aspernatur sint.
-                    </p>
+             
 
-                    <!-- Optional CTA button -->
+                    <!-- Optional CTA button 
                     <div class="mt-8">
                         <button class="cta-button">
                             Learn More
@@ -102,9 +100,9 @@
                         </button>
                     </div>
                 </div>
-
+-->
                 <div class="images-section flex-4">
-                    <div class="floating-container">
+                    <div class="floating-container" onclick={shuffleIcons}>
                         <img
                             src={Aws}
                             alt="AWS"
@@ -135,13 +133,13 @@
                             alt="Kubernetes"
                             class="floating-image k8s-icon"
                         />
-                        <button
+                        <!-- <button
                             onclick={shuffleIcons}
-                            class="cta-button opacity-20 hover:opacity-95"
+                            class="cta-button opacity-5 hover:opacity-45"
                             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;"
                         >
                             Shuffle Icons
-                        </button>
+                        </button> -->
                     </div>
                 </div>
             </div>
@@ -194,7 +192,7 @@
     .description-text {
         font-size: clamp(1rem, 2vw, 1.25rem);
         line-height: 1.8;
-        color: rgba(var(--color-accent-rgb, 255, 255, 255), 0.85);
+        color: rgba(var(--color-accent-rgb, 255, 255, 255), 1);
         font-weight: 300;
     }
 
