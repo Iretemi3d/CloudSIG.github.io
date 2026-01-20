@@ -8,182 +8,132 @@
 </script>
 
 <script lang="ts">
-    export let events: EventCard[] = [
+    // Using $state for Svelte 5 reactivity
+    let events = $state<EventCard[]>([
         {
             id: 1,
             title: "Intro to Cloud",
             date: "Jan 12, 2026",
             summary: "Kickoff session covering basics of cloud models.",
         },
-        
         {
             id: 2,
             title: "Coming soon",
-            date: ".....",
-            summary: "...........",
+            date: "TBA",
+            summary: "Synchronizing next transmission...",
         },
-        // {
-        //     id: 3,
-        //     title: "Kubernetes Workshop",
-        //     date: "Mar 21, 2026",
-        //     summary: "Hands-on cluster setup and deployment pipelines.",
-        // },
-        // {
-        //     id: 4,
-        //     title: "Data & AI",
-        //     date: "Apr 10, 2026",
-        //     summary: "Cloud data platforms and ML workflow integration.",
-        // },
-        // {
-        //     id: 5,
-        //     title: "Edge Computing",
-        //     date: "May 05, 2026",
-        //     summary: "Latency reduction strategies and edge architectures.",
-        // },
-    ];
+    ]);
 
-    let scroller: HTMLDivElement | null = null;
-    let isDragging = false;
+    let scroller = $state<HTMLDivElement | null>(null);
 
     function scrollByCards(direction: 1 | -1) {
         if (!scroller) return;
-        const card = scroller.querySelector(".card") as HTMLElement | null;
-        const amount = card
-            ? card.offsetWidth +
-              parseFloat(getComputedStyle(scroller).gap || "0")
-            : 300;
-        scroller.scrollBy({ left: direction * amount, behavior: "smooth" });
+        const cardWidth = 320 + 25; // card width + gap
+        scroller.scrollBy({ left: direction * cardWidth, behavior: "smooth" });
     }
 
     function handleWheel(e: WheelEvent) {
         if (!scroller) return;
+        // Natural horizontal scrolling
         const delta =
             Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
         scroller.scrollBy({ left: delta, behavior: "auto" });
     }
 </script>
 
-<section class="events-wrapper" aria-label="Upcoming events">
-    <div class="controls">
-        <button
-            type="button"
-            class="nav"
-            on:click={() => scrollByCards(-1)}
-            aria-label="Scroll left">◄</button
-        >
-        <button
-            type="button"
-            class="nav"
-            on:click={() => scrollByCards(1)}
-            aria-label="Scroll right">►</button
-        >
+<div class="relative w-full overflow-visible">
+    <div class="flex items-center justify-between mb-8 px-4">
+        <h2 class="text-2xl font-mono text-cyan-400 tracking-tighter uppercase">
+            <span
+                class="inline-block w-2 h-2 bg-cyan-400 rounded-full animate-ping mr-2"
+            ></span>
+            Event_Log
+        </h2>
+
+        <div class="flex gap-2">
+            <button
+                onclick={() => scrollByCards(-1)}
+                class="w-10 h-10 flex items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-cyan-500 hover:text-slate-950 transition-all text-white"
+                aria-label="Previous"
+            >
+                ◄
+            </button>
+            <button
+                onclick={() => scrollByCards(1)}
+                class="w-10 h-10 flex items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-cyan-500 hover:text-slate-950 transition-all text-white"
+                aria-label="Next"
+            >
+                ►
+            </button>
+        </div>
     </div>
 
     <div
         bind:this={scroller}
-        class="scroller {isDragging ? 'dragging' : ''}"
-        on:wheel|preventDefault={handleWheel}
+        onwheel={handleWheel}
+        class="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-none py-10 px-4 cursor-grab active:cursor-grabbing"
     >
         {#each events as ev}
             <article
-                class="card transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                class="group relative flex-none w-[300px] md:w-[350px] snap-start"
                 aria-labelledby={`ev-${ev.id}-title`}
             >
-                <h3 id={`ev-${ev.id}-title`} class="card-title">{ev.title}</h3>
-                <p class="card-date">{ev.date}</p>
-                <p class="card-summary">{ev.summary}</p>
+                <div
+                    class="absolute -inset-2 bg-cyan-500/0 group-hover:bg-cyan-500/10 blur-2xl rounded-[32px] transition-all duration-500"
+                ></div>
+
+                <div
+                    class="relative h-full p-8 bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-[24px] transition-all duration-300 group-hover:border-cyan-500/50 group-hover:-translate-y-2"
+                >
+                    <div
+                        class="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-cyan-500/0 group-hover:border-cyan-500/50 transition-all rounded-tr-[24px]"
+                    ></div>
+
+                    <p
+                        class="font-mono text-[10px] text-cyan-500/70 mb-4 tracking-[0.2em]"
+                    >
+                        DATA_STREAM_{ev.id}
+                    </p>
+
+                    <h3
+                        id={`ev-${ev.id}-title`}
+                        class="text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-cyan-400 transition-colors"
+                    >
+                        {ev.title}
+                    </h3>
+
+                    <div class="flex items-center gap-2 mb-6">
+                        <span
+                            class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 text-[10px] font-mono border border-cyan-500/20"
+                        >
+                            {ev.date}
+                        </span>
+                    </div>
+
+                    <p
+                        class="text-slate-400 text-sm leading-relaxed font-light italic"
+                    >
+                        "{ev.summary}"
+                    </p>
+
+                    <div
+                        class="absolute bottom-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                    ></div>
+                </div>
             </article>
         {/each}
     </div>
-</section>
+</div>
 
 <style>
-    .events-wrapper {
-        position: relative;
-        width: 100%;
-        margin: 0 auto;
-        padding: 0 40px 30px;
-    }
-    .controls {
-        display: flex;
-        justify-content: flex-end;
-        gap: 8px;
-        margin-bottom: 10px;
-    }
-    .nav {
-        background: var(--color-base-2, #222);
-        color: var(--color-accent);
-        border: 1px solid var(--color-accent);
-        padding: 6px 12px;
-        font-size: 15px;
-        cursor: pointer;
-        border-radius: 6px;
-        transition: background 0.2s;
-        width: 5%;
-    }
-    .nav:hover,
-    .nav:focus {
-        background: var(--color-accent);
-        color: #000;
-    }
-
-    .scroller {
-        display: flex;
-        gap: 25px;
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        padding: 25px;
-        cursor: grab;
-        user-select: none;
-        -ms-overflow-style: none;
-        touch-action: pan-y pinch-zoom;
-    }
-    .scroller:focus {
-        outline-offset: 2px;
-    }
-    .scroller::-webkit-scrollbar {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .scrollbar-none::-webkit-scrollbar {
         display: none;
     }
-    .scroller.dragging {
-        cursor: grabbing;
-    }
 
-    .card {
-        flex: 0 0 280px;
-        scroll-snap-align: start;
-        background: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(4px);
-        border: 1px solid var(--color-accent);
-        border-radius: 12px;
-        padding: 16px 18px 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        color: var(--color-highlight);
-        min-height: 50%;
-        min-width: 10%;
-    }
-    .card-title {
-        font-size: 150%;
-        margin: 0;
-        font-weight: 500;
-    }
-    .card-date {
-        font-size: 80%;
-        opacity: 0.8;
-        margin: 0;
-        color: var(--color-accent);
-    }
-    .card-summary {
-        font-size: 120%;
-        margin: 0;
-    }
-
-    @media (min-width: 900px) {
-        .card {
-            flex-basis: 320px;
-        }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .scrollbar-none {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
     }
 </style>
