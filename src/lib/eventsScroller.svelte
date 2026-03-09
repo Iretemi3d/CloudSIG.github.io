@@ -18,9 +18,9 @@
         },
         {
             id: 2,
-            title: "Coming soon",
-            date: "TBA",
-            summary: "Synchronizing next transmission...",
+            title: "Games Night Social",
+            date: "12th of March",
+            summary: "Games night social! All attendees will be entered into a £15 cash draw",
         },
     ]);
 
